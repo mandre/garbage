@@ -1,0 +1,17 @@
+name: change-readme
+on:
+  pull_request:
+    types:
+      - opened
+      - labeled
+      - synchronize
+    paths:
+      - '**README**'
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    if: >
+      github.event.action == 'labeled'
+      && contains(github.event.label.name, 'ok-to-test')
+    steps:
+      - run: echo 'someone touched the README'
