@@ -9,6 +9,8 @@ on:
 jobs:
   semver:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: mheap/github-action-required-labels@v5
         with:
