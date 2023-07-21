@@ -19,3 +19,6 @@
 - color: '6E7624'
   description: No API change
   name: semver:patch
+- color: '6E7624'
+  description: OK to test
+  name: ok-to-test
