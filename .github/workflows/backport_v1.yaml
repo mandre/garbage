@@ -24,10 +24,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Backporting
-        uses: kiegroup/git-backporting@e29dae5073d5b026781931f9be00fc19d0453acb
+        uses: kiegroup/git-backporting@bce5dd4f9969d47da9cbb6ed06abbf87216afc98
         with:
           target-branch: v1
           pull-request: ${{ github.event.pull_request.url }}
           auth: ${{ secrets.GITHUB_TOKEN }}
           no-squash: true
           strategy-option: find-renames
+
+      - name: Report failure
+        if: failure()
+        run: gh issue comment "$NUMBER" --body "$BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: >
+            Failed to backport PR to branch v1.
