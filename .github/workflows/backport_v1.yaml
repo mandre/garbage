@@ -40,4 +40,4 @@ jobs:
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.pull_request.number }}
           BODY: >
-            Failed to backport PR to branch v1. ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Failed to backport PR to branch v1. ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job_id }}
