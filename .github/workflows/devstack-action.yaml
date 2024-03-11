@@ -15,12 +15,6 @@ jobs:
         openstack_version: ["master"]
         ubuntu_version: ["22.04"]
     runs-on: ubuntu-${{ matrix.ubuntu_version }}
-    conf_overrides: |
-      # This is a comment with "quotes"
-      [[post-config|/etc/neutron/port_binding.yaml]]
-      \"create_port:binding:profile\": \"rule:admin_only or rule:service_api\"
-      \"update_port:binding:profile\": \"rule:admin_only or rule:service_api\"
-
     name: Deploy OpenStack ${{ matrix.name }} with defaults and run basic acceptance tests
     steps:
       - name: Deploy devstack
@@ -28,3 +22,8 @@ jobs:
         with:
           branch: ${{ matrix.openstack_version }}
           enabled_services: 's-account,s-container,s-object,s-proxy'
+          conf_overrides: |
+            # This is a comment with "quotes"
+            [[post-config|/etc/neutron/port_binding.yaml]]
+            \"create_port:binding:profile\": \"rule:admin_only or rule:service_api\"
+            \"update_port:binding:profile\": \"rule:admin_only or rule:service_api\"
