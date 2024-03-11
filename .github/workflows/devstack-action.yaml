@@ -25,5 +25,4 @@ jobs:
           conf_overrides: |
             # This is a comment with "quotes"
             [[post-config|/etc/neutron/port_binding.yaml]]
-            \"create_port:binding:profile\": \"rule:admin_only or rule:service_api\"
-            \"update_port:binding:profile\": \"rule:admin_only or rule:service_api\"
+            "create_port:binding:profile": "rule:admin_only or rule:service_api"
